@@ -1,16 +1,18 @@
 import React from 'react';
 import './app.css';
 import { Route, Link, Switch } from 'react-router-dom';
+import ShopHeader from "../shop-header";
 import { HomePage, CartPage } from "../pages";
 
 const App = () => {
     return (
-        <div>
+        <main role="main" className="container">
+            <ShopHeader numItems={5} total={310}/>
             <Switch>
                 <Route path="/" component={HomePage} exact/>
                 <Route path="/cart" component={CartPage}/>
             </Switch>
-        </div>
+        </main>
     );
 };
 
