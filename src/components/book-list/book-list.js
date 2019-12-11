@@ -3,7 +3,7 @@ import BookListItem from "../book-list-item";
 import { connect } from 'react-redux';
 
 import { withBookstoreService } from '../hoc';
-import { booksLoaded, booksRequested, booksError } from "../../actions";
+import { fetchBooks } from "../../actions";
 import { compose } from "../../utils";
 import './book-list.css';
 import Spinner from "../spinner";
@@ -49,17 +49,9 @@ const mapStateToProps = ({ books, loading, error }) => {
 };
 
 //  описывает то какие действия захочет выполнить компонент, какие действия будет передавать в STORE
-const mapDispatchToProps = (dispatch, ownProps) => {
-    //  используя ownProps получаем bookstoreService из свойств элемента,
-    //  когда withBookstoreService его обрачивает
-    const { bookstoreService } = ownProps;
+const mapDispatchToProps = (dispatch, { bookstoreService }) => {
     return {
-        fetchBooks: () => {
-            dispatch(booksRequested());
-            bookstoreService.getBooks()
-                .then((data) => dispatch(booksLoaded(data)))
-                .catch((err) => dispatch(booksError(err)));
-        }
+        fetchBooks: fetchBooks(bookstoreService, dispatch),
     };
 };
 
