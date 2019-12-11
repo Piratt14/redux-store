@@ -48,7 +48,7 @@ class BookListContainer extends Component {
 }
 
 //  эта функция описывает какие данных компонент хочет получить из REDUX STORE
-const mapStateToProps = ({ books, loading, error }) => {
+const mapStateToProps = ({ bookList: { books, loading, error }}) => {
     return {
         books,
         loading,
