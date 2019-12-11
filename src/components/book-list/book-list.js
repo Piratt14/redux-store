@@ -12,20 +12,7 @@ import ErrorIndicator from "../error-indicator";
 class BookList extends Component {
 
     componentDidMount() {
-        // получаем сервис из контекста
-        // при помощи компонента высшего порядка withBookstoreService
-        const {
-            bookstoreService,
-            booksLoaded,
-            booksRequested,
-            booksError,
-        } = this.props;
-        // из сервиса получаем данные
-        // передаем данные в REDUX STORE с помощью этого экшена
-        booksRequested();
-        bookstoreService.getBooks()
-            .then((data) => booksLoaded(data))
-            .catch((err) => booksError(err));
+        this.props.fetchBooks();
     }
 
     render() {
@@ -62,7 +49,19 @@ const mapStateToProps = ({ books, loading, error }) => {
 };
 
 //  описывает то какие действия захочет выполнить компонент, какие действия будет передавать в STORE
-const mapDispatchToProps = ({ booksLoaded, booksRequested, booksError });
+const mapDispatchToProps = (dispatch, ownProps) => {
+    //  используя ownProps получаем bookstoreService из свойств элемента,
+    //  когда withBookstoreService его обрачивает
+    const { bookstoreService } = ownProps;
+    return {
+        fetchBooks: () => {
+            dispatch(booksRequested());
+            bookstoreService.getBooks()
+                .then((data) => dispatch(booksLoaded(data)))
+                .catch((err) => dispatch(booksError(err)));
+        }
+    };
+};
 
 export default compose(
     withBookstoreService(),
