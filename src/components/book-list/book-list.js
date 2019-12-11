@@ -3,7 +3,7 @@ import BookListItem from "../book-list-item";
 import { connect } from 'react-redux';
 
 import { withBookstoreService } from '../hoc';
-import { booksLoaded } from "../../actions";
+import { booksLoaded, booksRequested } from "../../actions";
 import { compose } from "../../utils";
 import './book-list.css';
 import Spinner from "../spinner";
@@ -13,9 +13,10 @@ class BookList extends Component {
     componentDidMount() {
         // получаем сервис из контекста
         // при помощи компонента высшего порядка withBookstoreService
-        const { bookstoreService, booksLoaded } = this.props;
+        const { bookstoreService, booksLoaded, booksRequested } = this.props;
         // из сервиса получаем данные
         // передаем данные в REDUX STORE с помощью этого экшена
+        booksRequested();
         bookstoreService.getBooks()
             .then((data) => booksLoaded(data));
     }
@@ -49,7 +50,7 @@ const mapStateToProps = ({ books, loading }) => {
 };
 
 //  описывает то какие действия захочет выполнить компонент, какие действия будет передавать в STORE
-const mapDispatchToProps = ({booksLoaded});
+const mapDispatchToProps = ({ booksLoaded, booksRequested });
 
 export default compose(
     withBookstoreService(),
