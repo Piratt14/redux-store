@@ -9,6 +9,13 @@ const initialState = {
 
 const updateCartItems = (cartItems, item, idx) => {
 
+    if (item.count === 0) {
+        return [
+            ...cartItems.slice(0, idx),
+            ...cartItems.slice(idx + 1),
+        ];
+    }
+
     if (idx === -1) {
         return [
             ...cartItems,
