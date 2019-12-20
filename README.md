@@ -22,3 +22,13 @@ All buttons in the application perform intuitive functions. Each component takes
 ### 
 
 ![screenshot of store](https://github.com/Piratt14/redux-store/blob/master/misc/store_screenshot.png)
+
+[This App Hosted on GitHub Pages](https://piratt14.github.io/redux-store/)
+
+Due to the features of github hosting, there is a slight nuance when using the application. 
+The screenshot demonstrates what is needed first, after the transition, click on the name of the application.
+
+Из-за особенностей гитхаб хостинга есть небольшой нюанс при пользовании приложением. 
+Скриншот демонстрирует что нужно вначале после перехода нажать на название приложения.
+
+![instruction screen](https://github.com/Piratt14/redux-store/blob/master/misc/github-bug.jpg)
