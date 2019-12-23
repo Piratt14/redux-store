@@ -1,4 +1,4 @@
-# redux-store
+# Redux(with React) e-store
 
 ## Description:
 
@@ -18,6 +18,14 @@ All buttons in the application perform intuitive functions. Each component takes
 * **Platforms:** Browser SPA
 * **Tools:** Web Storm, Git
 * **Languages & Technologies:** HTML, CSS, JS, React, Redux, Bootstrap
+
+## Какой опыт я получил :
+
+В этом приложении я в основном узнавал Redux, его структуру и внедрение с React. Улучшал свои навыки работы с React компонентами. А также познакомился с Redux DevTools для разработки и отладки приложений базирующихся на Redux. Узнал про 2 способа модификации работы Redux: store enhancers и middleware.
+
+## What experience did i get:
+
+In this application, I mainly learned about Redux, its structure and implementation with React. Improved my skills with React components. He also met Redux DevTools for developing and debugging applications based on Redux. I learned about 2 ways to modify the operation of Redux: store enhancers and middleware.
 
 ### 
 
